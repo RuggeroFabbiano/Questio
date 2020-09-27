@@ -1,0 +1,38 @@
+{% extends "Base.html" %}
+{% load crispy_forms_tags %}
+
+{% block CSS %}
+<style lang="css">
+  :root {--colour1: rgb(112, 128, 144); /* "ardesia" */
+         --colour2: rgb(192, 192, 192); /* "argento" */
+         --colour3: rgb(135, 169, 107)} /* "asparago" */
+  body {font-family: 'Abhaya Libre', serif}
+  #sign{width: 400px;
+        border: 2pt solid var(--colour1);
+        margin: auto;
+        margin-top: 1em;
+        padding: 1em}
+  #signLink:link, #signLink:active, #signLink:visited, #signLink:hover {color: var(--colour3)}
+  .btn, .btn:link, .btn:active, .btn:visited {background-color: var(--colour2);
+                                              font-weight: bold}
+  .btn:hover{background-color: var(--colour3);
+             color: white}
+</style>
+{% endblock %}
+
+{% block title %}Sign in - {% endblock %}
+
+{% block content %}
+<div id="sign">
+  <h1>Sign in</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-sm"><strong>Sign in</strong></button>
+  </form>
+  <p>
+    No account yet?
+    <a id="signLink" href="{% url 'sign up' %}"><strong>Sign up</strong></a>
+  </p>
+</div>
+{% endblock %}

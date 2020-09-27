@@ -1,0 +1,11 @@
+{% extends "Base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block CSS %}
+<link rel="stylesheet" href="/static/style.css?{% now 'U' %}"/>
+{% endblock %}
+
+{% block content %}
+<div id="app"></div>
+{% render_bundle 'app' %}
+{% endblock %}

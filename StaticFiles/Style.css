@@ -1,0 +1,32 @@
+:root {--colour1: rgb(112, 128, 144); /* "ardesia" */
+       --colour2: rgb(192, 192, 192); /* "argento" */
+       --colour3: rgb(135, 169, 107)} /* "asparago" */
+
+body {font-family: 'Abhaya Libre', serif}
+
+#sign{width: 400px;
+      border: 2pt solid var(--colour1);
+      margin: auto;
+      margin-top: 1em;
+      padding: 1em}
+
+#signLink:link, #signLink:active, #signLink:visited, #signLink:hover {color: var(--colour3)}
+
+h4 {font-size: 24pt}
+
+h5 {font-size: 20pt}
+
+h6 {font-size: 14pt}
+
+.author {font-weight: bold;
+         background-color: var(--colour3);
+         color: white;
+         padding: 0.1em 0.2em}
+
+.btn, .btn:link, .btn:active, .btn:visited {background-color: var(--colour2);
+                                            font-weight: bold}
+
+.btn:hover{background-color: var(--colour3);
+           color: white}
+
+.error {color: red}
