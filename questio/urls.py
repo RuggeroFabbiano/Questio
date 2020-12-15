@@ -26,8 +26,8 @@ router.register("questions", views.QuestionView)
 
 urlpatterns = [
     # Web application authorisations
-    path("accounts/sign_up", RegistrationView.as_view(success_url="/"), name="sign up"), # registration
-    # path("accounts",  include('django_registration.backends.one_step.urls')), # seems useless
+    path("accounts/sign_up", RegistrationView.as_view(success_url="/"),
+         name="sign up"), # registration
     path("accounts/", include('django.contrib.auth.urls')), # authentication
     # API authorisations
     path("API/accounts/register", include('rest_auth.registration.urls')), # ReST registration
@@ -36,14 +36,19 @@ urlpatterns = [
     path('API/user', views.GetUser.as_view(), name="getUser"),
     # API end-points
     path("API/", include(router.urls)),
-    path("API/question/<slug:slug>/answer/", views.AnswerView.as_view(), name="answer"),
-    path("API/question/<slug:slug>/answers/", views.QuestionAnswersView.as_view(), name="questionAnswers"),
-    path("API/answers/<int:pk>", views.AnswerDetailView.as_view(), name="answer detail"),
-    path("API/answers/<int:pk>/like", views.AnswerLikeView.as_view(), name="answer like"),
+    path("API/question/<slug:slug>/answer/", views.AnswerView.as_view(),
+         name="answer"),
+    path("API/question/<slug:slug>/answers/",
+         views.QuestionAnswersView.as_view(), name="questionAnswers"),
+    path("API/answers/<int:pk>", views.AnswerDetailView.as_view(),
+         name="answer detail"),
+    path("API/answers/<int:pk>/like", views.AnswerLikeView.as_view(),
+         name="answer like"),
     # Administration
     path('admin/', admin.site.urls),
     # Static files
-    re_path('static/(?P<path>.*)', serve, {'document_root': settings.STATIC_ROOT}),
+    re_path('static/(?P<path>.*)', serve,
+            {'document_root': settings.STATIC_ROOT}),
     # SPA
     re_path(".*", views.SPAView.as_view(), name="SPAView")
 ]
